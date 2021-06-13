@@ -4,7 +4,7 @@ class ArtworksController < ApplicationController
   before_action :find_artwork_by_id, only: [:show, :update, :destroy]
 
   def index
-    render json: @user.artworks
+    render json: { :owned_artworks => @user.artworks, :shared_artworks => @user.shared_artworks }
   end
 
   def create
