@@ -8,11 +8,11 @@ class ArtworksController < ApplicationController
   end
 
   def create
-    artwork = @user.artworks.build(artwork_params)
-    if artwork.save
-      render json: artwork
+    @artwork = @user.artworks.build(artwork_params)
+    if @artwork.save
+      render json: @artwork
     else
-      render json: artwork.errors.full_messages, status: :unprocessable_entity
+      render json: @artwork.errors.full_messages, status: :unprocessable_entity
     end
   end
 
