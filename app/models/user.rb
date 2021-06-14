@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   has_many :artworks, :foreign_key => 'artist_id', dependent: :destroy
-  # Artworkshare many-to-many relationship
+  # Artworkshare many-to-many
   has_many :artwork_shares, :foreign_key => 'viewer_id', dependent: :destroy
   has_many :shared_artworks, through: :artwork_shares, :foreign_key => 'viewer_id', :class_name => 'Artwork'
+  # Comment one-to-many
+  has_many :comments, dependent: :destroy
 end
