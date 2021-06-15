@@ -11,6 +11,7 @@ User.destroy_all
 Artwork.destroy_all
 ArtworkShare.destroy_all
 Comment.destroy_all
+Like.destroy_all
 
 user1 = User.create!(name: 'robert')
 user2 = User.create!(name: 'bill')
@@ -23,3 +24,7 @@ comment3 = Comment.create!(body: 'your art is greate user1', user_id: user2.id, 
 ArtworkShare.create!(artwork_id: artwork1.id, viewer_id: user2.id)
 ArtworkShare.create!(artwork_id: artwork2.id, viewer_id: user2.id)
 ArtworkShare.create!(artwork_id: artwork3.id, viewer_id: user1.id)
+Like.create!(user_id: user1.id, likeable_id: comment1.id, likeable_type: 'Comment')
+Like.create!(user_id: user2.id, likeable_id: comment1.id, likeable_type: 'Comment')
+Like.create!(user_id: user2.id, likeable_id: artwork2.id, likeable_type: 'Artwork')
+Like.create!(user_id: user1.id, likeable_id: artwork2.id, likeable_type: 'Artwork')
