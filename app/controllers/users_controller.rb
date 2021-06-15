@@ -2,7 +2,16 @@ class UsersController < ApplicationController
   before_action :find_user_from_route_id, only: [:show, :update, :destroy]
 
   def index
-    render json: User.all
+    if params[:name]
+      user = User.find_by_name(params[:name])
+      if user
+        render json: user
+      else
+        render json: ["There is no such user named #{params[:name]}"]
+      end
+    else 
+      render json: User.all
+    end
   end
 
   def create
