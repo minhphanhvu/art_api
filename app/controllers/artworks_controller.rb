@@ -37,6 +37,16 @@ class ArtworksController < ApplicationController
     render json: @artwork
   end
 
+  def like
+    artworks = User.find_by_id(params[:id]).liked_artworks
+    render json: artworks
+  end
+
+  def liking_users
+    users = Artwork.find_by_id(params[:id]).liking_viewers
+    render json: users
+  end
+
   private
   def artwork_params
     params.require(:artwork).permit(:title, :image_url)

@@ -25,6 +25,16 @@ class CommentsController < ApplicationController
     render json: comment
   end
 
+  def like
+    comments = User.find_by_id(params[:id]).liked_comments
+    render json: comments
+  end
+
+  def liking_users
+    users = Comment.find_by_id(params[:id]).liking_viewers
+    render json: users
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:artwork_id, :user_id, :body)

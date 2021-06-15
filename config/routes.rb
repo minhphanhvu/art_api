@@ -5,21 +5,25 @@ Rails.application.routes.draw do
     resources :artworks
   end
 
-  # ArtworkShares
-  resources :artwork_shares, only: [:create, :destroy]
-
   # Comments
   resources :users do
     member do
       get 'comments', to: 'comments#index'
+      get 'liked-comments', to: 'comments#like'
+      get 'liked-artworks', to: 'artworks#like'
     end
   end
+  resources :comments, only: [:create, :destroy]
+  get 'liked-comments/:id/users', to: 'comments#liking_users'
 
+  # Artworks
   resources :artworks do
     member do
       get 'comments', to: 'comments#index'
     end
   end
+  get 'liked-artworks/:id/users', to: 'artworks#liking_users'
 
-  resources :comments, only: [:create, :destroy]
+  # ArtworkShares
+  resources :artwork_shares, only: [:create, :destroy]
 end
