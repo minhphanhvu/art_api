@@ -5,7 +5,7 @@ class Artwork < ApplicationRecord
   validates :title, uniqueness: { scope: :artist_id,
     message: 'Each artist must have unique titles(titles can be the same for different artists)' }
   has_many :artwork_shares, :foreign_key => 'artwork_id', dependent: :destroy
-  has_many :shared_viewers, through: :artwork_shares, source: :user
+  has_many :shared_viewers, through: :artwork_shares, class_name: 'User'
   # Comment one-to-many
   has_many :comments, dependent: :destroy
   # Like polymorphic association

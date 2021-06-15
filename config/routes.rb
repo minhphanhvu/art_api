@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get 'comments', to: 'comments#index'
       get 'liked-comments', to: 'comments#like'
       get 'liked-artworks', to: 'artworks#like'
+      get 'favorite-artworks', to: 'artworks#favorites'
     end
   end
   resources :comments, only: [:create, :destroy]

@@ -47,6 +47,11 @@ class ArtworksController < ApplicationController
     render json: users
   end
 
+  def favorites
+    favorites = User.find_by_id(params[:id]).shared_artworks.where(favorite: true)
+    render json: favorites
+  end
+
   private
   def artwork_params
     params.require(:artwork).permit(:title, :image_url)
