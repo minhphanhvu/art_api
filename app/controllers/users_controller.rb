@@ -4,11 +4,7 @@ class UsersController < ApplicationController
   def index
     if params[:name]
       user = User.find_by_name(params[:name])
-      if user
-        render json: user
-      else
-        render json: ["There is no such user named #{params[:name]}"]
-      end
+      user.nil? ? (render json: ["There is no such user named #{params[:name]}"]) : (render json: user)
     else 
       render json: User.all
     end
