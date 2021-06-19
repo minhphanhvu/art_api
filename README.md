@@ -111,13 +111,108 @@ Destroyed artwork is expected to be returned. Status code 200.
 
 ### Create an artwork share: POST localhost:3000/artwork_shares
 Status code 200 is expected as well as the created new artwork_share record.
+
 | field | type |
+|-------|------|
 | artwork_id | integer |
 | viewer_id | |integer |
 | favorite | boolean |
 
 ### Delete an artwork share: DELETE localhost:3000/:id
 Expect the artwork_share object to be returned with status code 200.
+
+## Comments
+Comment object have a text `body`, as well as `user_id` and `artwork_id` to
+signify which user and which artwork it `belongs_to`.
+
+### Create a comment: POST localhost:3000/comments
+
+| field | type |
+|-------|------|
+| body | string |
+| user_id | integer |
+| artwork_id | integer |
+
+Expect the new object record returned with status code 200.
+
+### Destroy a comment: DELETE localhost:3000/comments/:id
+Example: localhost:3000/comments/1
+
+Expect the deleted record returned
+```
+[
+  {
+    "id": 1,
+    "body": "great!",
+    "user_id": 1,
+    "artwork_id": 1,
+  }
+]
+```
+
+### Get all comments belonging to an artwork: GET localhost:3000/artworks/:id/comments
+Example: GET localhost:3000/artworks/1/comments
+
+```
+[
+  {
+    "id": 1,
+    "body": "great!",
+    "user_id": 1,
+    "artwork_id": 1,
+  },
+  {
+    "id": 3,
+    "body": "your art is greate user1",
+    "user_id": 2,
+    "artwork_id": 1,
+  }
+]
+```
+
+### Get all comments belonging to a user: GET localhost:3000/users/:id/comments
+Example: GET localhost3000/users/1/comments
+
+```
+[
+  {
+    "id": 1,
+    "body": "great!",
+    "user_id": 1,
+    "artwork_id": 1,
+  }
+]
+```
+
+### Get all comments liked by a user: GET localhost:3000/users/:id/liked-comments
+Example: GET localhost:3000/users/1/liked-comments
+
+```
+[
+  {
+    "id": 1,
+    "body": "great!",
+    "user_id": 1,
+    "artwork_id": 1,
+  }
+]
+```
+
+### Get all users that like a specific comment: GET localhost:3000/liked-comments/1/users
+Example: GET localhost:3000/liked-comments/1/users
+
+```
+[
+  {
+    "id": 2,
+    "name": "bill",
+  },
+  {
+    "id": 1,
+    "name": "robert",
+  }
+]
+```
 
 
 
