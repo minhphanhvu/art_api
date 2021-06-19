@@ -75,6 +75,7 @@ Example: GET localhost:3000/users/1/artworks
 Example: POST localhost:3000/users/1/artworks.
 
 | field               | type    |
+|---------------------|---------|
 | title               | string  |
 | image_url           | string  |
 | favorite (optional) | boolean |
@@ -95,8 +96,10 @@ Example: GET localhost:3000/users/1/artworks/1.
 ```
 
 ### Update an artwork: PATCH localhost:3000/users/:user_id/artworks/:id
-Example: PATCH localhost:3000/users/1/artworks/4
+Example: PATCH localhost:3000/users/1/artworks/4.
+
 | field | type |
+|-------|------|
 | title (optional) | string |
 | image_url (optional) | string |
 | favorite (optional) | boolean|
