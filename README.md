@@ -115,7 +115,7 @@ Status code 200 is expected as well as the created new artwork_share record.
 | field | type |
 |-------|------|
 | artwork_id | integer |
-| viewer_id | |integer |
+| viewer_id | integer |
 | favorite | boolean |
 
 ### Delete an artwork share: DELETE localhost:3000/:id
