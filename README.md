@@ -26,7 +26,7 @@ Routes:
 | name  | string |
 
 ### Get an user: GET localhost:3000/users/:id.
-Example: GET localhost:3000/users/1
+Example: GET localhost:3000/users/1.
 ```
 [
   {
@@ -37,13 +37,13 @@ Example: GET localhost:3000/users/1
 ```
 
 ### Update a user: PATCH localhost:3000/users/:id. Data in x-www-urlencoded form.
-Example: PATCH localhost:3000/users/1
+Example: PATCH localhost:3000/users/1.
 | field | type |
 |-------|-------|
 | name  | string |
 
 ### Delete a user: DELETE localhost:3000/users/:id.
-Example: DELETE localhost:3000/users/1
+Example: DELETE localhost:3000/users/1.
 Expect status 200 with the deleted user returned.
 
 ### Get owned_artworks and shared_artworks: GET localhost:3000/users/:id/artworks
@@ -72,11 +72,12 @@ Example: GET localhost:3000/users/1/artworks
 ```
 
 ### Create an artwork: POST localhost:3000/users/:id/artworks. Data in x-www-urlencoded form.
-Example: POST localhost:3000/users/1/artworks
-| field | type |
-| title | string |
-| image_url | string |
+Example: POST localhost:3000/users/1/artworks.
+| field               | type |
+| title               | string |
+| image_url           | string |
 | favorite (optional) | boolean |
+
 Status code 200 is returned as well as the artwork object with `artist_id`
 with the value of id from the URL route.
 
