@@ -54,7 +54,7 @@ class ArtworksController < ApplicationController
 
   private
   def artwork_params
-    params.require(:artwork).permit(:title, :image_url)
+    params.require(:artwork).permit(:title, :image_url, :favorite)
   end
 
   def find_user_by_id
