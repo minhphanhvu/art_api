@@ -73,9 +73,10 @@ Example: GET localhost:3000/users/1/artworks
 
 ### Create an artwork: POST localhost:3000/users/:id/artworks. Data in x-www-urlencoded form.
 Example: POST localhost:3000/users/1/artworks.
-| field               | type |
-| title               | string |
-| image_url           | string |
+
+| field               | type    |
+| title               | string  |
+| image_url           | string  |
 | favorite (optional) | boolean |
 
 Status code 200 is returned as well as the artwork object with `artist_id`
